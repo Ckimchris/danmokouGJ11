@@ -1,0 +1,89 @@
+pattern({ 
+	boss tutorial
+})
+phase(0)
+	paction(0)
+		shift-phase-to(1)
+		
+<!> type(non, ``)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+
+<!> type(spell, `Iaido Sign - Half Moon Shining Draw`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+
+gtrepeat({
+		times(_)
+		wait(2s)
+		wait-child
+		alternate t
+	}, {
+	gtrepeat({
+		wait(5s)
+		wait-child
+		sequential
+	}, {
+		async(_, <;:90>, girepeat {
+			for(3s)
+			times(20)
+			wait(8)
+			color { purple red blue yellow }
+		} {
+			gcrepeat {
+				colorr gdlaser-*/w
+				wait(20)
+				start { rv2.a +=f rand(-180, 180) }
+				times(3)
+				circle
+			} laser(null, 1, 0, { dsfx })
+		})
+		async(gdlaser-teal/, <0;0:0;0:135>, gcrepeat {
+			for(2s)
+			times(150)
+			spread(<180>)
+		} laser null 2 0 { dsfx })
+		async(gdlaser-teal/, <0;0:0;0:135>, gcrepeat {
+			for(2s)
+			times(150)
+			wait(1)
+			spread(<180>)
+		} laser null 0 0.5 { dsfx })
+	})
+	gtrepeat({
+		wait(5s)
+		wait-child
+		sequential
+	}, {
+		async(_, <;:90>, girepeat {
+			for(3s)
+			times(20)
+			wait(8)
+			color { purple red blue yellow }
+		} {
+			gcrepeat {
+				colorr gdlaser-*/w
+				wait(20)
+				start { rv2.a +=f rand(-180, 180) }
+				times(3)
+				circle
+			} laser(null, 1, 0, { dsfx })
+		})
+		async(gdlaser-teal/, <0;0:0;0:45>, gcrepeat {
+			for(2s)
+			times(150)
+			wait(1)
+			spread(<-180>)
+		} laser null 2 0 { dsfx })
+		async(gdlaser-teal/, <0;0:0;0:45>, gcrepeat {
+			for(2s)
+			times(150)
+			wait(1)
+			spread(<-180>)
+		} laser null 0 0.5 { dsfx })
+	})
+})

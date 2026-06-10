@@ -24,9 +24,9 @@ MonoBehaviour:
     hardcoded:
       en: 'Bomb: Galactic Seal'
       jp: 
-  cutin: {fileID: 6569664309894581897, guid: e77a5591d3e0dd440af06a1f0a59b890, type: 3}
+  cutin: {fileID: 6569664309894581897, guid: 46493bf1b87e2ca4e9f48b9743cbb783, type: 3}
   spellTitle: {fileID: 3197345815071301053, guid: f59b1fcc83200c345a2b26a22a136b0a,
     type: 3}
   spellColor1: {r: 0.4666667, g: 0.72720164, b: 0.9607843, a: 1}
   spellColor2: {r: 0.20784314, g: 0.54901963, b: 0.6431373, a: 1}
-  sm: {fileID: 0}
+  sm: {fileID: 11500000, guid: 20c6af46d2ca48e8813a40a93061871f, type: 3}

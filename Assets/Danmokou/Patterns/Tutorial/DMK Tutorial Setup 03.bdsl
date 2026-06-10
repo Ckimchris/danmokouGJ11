@@ -1,0 +1,189 @@
+<#> warnprefix
+## Go to https://dmk.bagoum.com/docs/articles/tbosses.html for the tutorial. 
+pattern({ 
+	##boss(mynewboss)
+})
+phase(0)
+	paction(0)
+		shift-phase-to(1)
+	
+##1. Spiral-to-straight
+phase 0 #{
+	paction 0
+	gtrepeat({
+		wait-child
+		sequential
+	}, {
+		async lightning-*/ <> gcrepeat {
+			sfx({ x-fire-tech-6 x-fire-tech-8 })
+		} gsrepeat {
+			root pxy 5 5
+			times(5)
+			rv2incr(<5>)
+			target(angle, Lplayer)
+			center
+			color({ red })
+			bindAngle
+		}  pather 1 1 tprot cx 8 { }
+		async lightning-*/ <> gcrepeat {
+			delay(1s)
+			sfx({ x-fire-tech-6 x-fire-tech-8 })
+		} gsrepeat {
+			root pxy -5 5
+			times(5)
+			rv2incr(<5>)
+			target(angle, Lplayer)
+			center
+			color({ yellow })
+			bindAngle
+		}  pather 1 1 tprot cx 7 { }
+		async lightning-*/ <-90> gcrepeat {
+			sfx({ x-fire-tech-6 x-fire-tech-8 })
+		} gsrepeat {
+			root pxy 0 5
+			times(5)
+			rv2incr(<5>)
+			center
+			color({ yellow })
+			bindAngle
+		}  pather 1 1 tprot cx 10 { }
+		move-target 1 in-sine cy -4
+		async lightning-*/ <90> gcrepeat {
+			sfx({ x-fire-tech-6 x-fire-tech-8 })
+		} gsrepeat {
+			root pxy 0 -5
+			times(5)
+			rv2incr(<5>)
+			center
+			color({ yellow })
+			bindAngle
+		}  pather 1 1 tprot cx 10 { }
+		move-target 1 in-sine cy 3
+	})
+
+##2. Spiral-to-straight
+<!> root(0, -4)
+phase 0 #{
+	paction 0
+	gtrepeat({
+		wait-child
+		sequential
+	}, {
+		async(_, <90>, girepeat {
+			times(1)
+			delay(1s)
+		} {
+			gcrepeat {
+				colorr lightning-yellow/w
+				times(3)
+				rv2incr(<5>)
+				center
+			} pather(1, 1, tprot cx 10, { 
+				sm async amulet-pink/b <> gcrepeat ({
+					wait(15)
+					times(_)
+					face(rotvel)
+				}, s(rvelocity(lerpt(1, 2, zero, cx(3)))))
+			})
+			gcrepeat {
+				colorr lightning-yellow/w
+				times(3)
+				rv2incr(<10>)
+				center
+			} pather(1, 1, tprot cx 10, { 
+				sm async amulet-pink/b <> gcrepeat ({
+					wait(15)
+					times(_)
+					face(rotvel)
+				}, s(rvelocity(lerpt(1, 2, zero, cx(-3)))))
+			})
+		})
+		move-target 0.5 in-sine cy 3
+	})
+
+##3. Spiral-to-straight
+<!> root(0, 3)
+phase 0 #{
+	paction 0
+	gtrepeat({
+		wait-child
+		sequential
+	}, {
+		async lightning-*/ <> gcrepeat {
+			sfx({ x-fire-tech-6 x-fire-tech-8 })
+		} gsrepeat {
+			root pxy 5 5
+			times(5)
+			rv2incr(<5>)
+			target(angle, Lplayer)
+			center
+			color({ red })
+			bindAngle
+		}  pather 1 1 tprot cx 8 { }
+		async lightning-*/ <> gcrepeat {
+			delay(1s)
+			sfx({ x-fire-tech-6 x-fire-tech-8 })
+		} gsrepeat {
+			root pxy -5 5
+			times(5)
+			rv2incr(<5>)
+			target(angle, Lplayer)
+			center
+			color({ yellow })
+			bindAngle
+		}  pather 1 1 tprot cx 9 { }
+		gtrepeat({
+			delay(2s)
+			wait-child
+			sequential
+		}, {
+			savev2 ploc 0 Lplayer
+			move-target 2 in-sine pxy(0, 3)
+			async lightning-*/ <-90> gcrepeat {
+				sfx({ x-fire-tech-6 x-fire-tech-8 })
+			} gsrepeat {
+				times(5)
+				rv2incr(<5>)
+				center
+				color({ yellow })
+				bindAngle
+			}  pather 1 1 tprot cx 10 { }
+			move-target 1 in-sine cxy (0,  -4)
+		})
+		gtrepeat({
+			delay(1s)
+			wait-child
+			sequential
+		}, {
+			async(_, <90>, girepeat {
+				times(1)
+				delay(1s)
+			} {
+				gcrepeat {
+					colorr lightning-yellow/w
+					times(3)
+					rv2incr(<5>)
+					center
+				} pather(1, 1, tprot cx 10, { 
+					sm async amulet-pink/b <> gcrepeat ({
+						wait(17)
+						times(_)
+						face(rotvel)
+					}, s(rvelocity(lerpt(1, 2, zero, cx(4)))))
+				})
+				gcrepeat {
+					colorr lightning-yellow/w
+					times(3)
+					rv2incr(<10>)
+					center
+				} pather(1, 1, tprot cx 10, { 
+					sm async amulet-pink/b <> gcrepeat ({
+						wait(17)
+						times(_)
+						face(rotvel)
+					}, s(rvelocity(lerpt(1, 2, zero, cx(-4)))))
+				})
+			})
+			move-target 0.5 in-sine cy 3
+		})
+	})

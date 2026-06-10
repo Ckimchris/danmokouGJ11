@@ -1,7 +1,7 @@
 pattern { }
 phase 0
 	paction 0
-		shift-phase-to 2
+		shift-phase-to 1
 	
 !!{ allc { black purple teal green orange yellow red pink blue }	
 ##1. Draw-circular bank:nest circular
@@ -10,8 +10,8 @@ phase 0 #{
 		position 0 1
 		async gem-* <2;:-90> gcr2 19 _ <35> {
 			color { */b */ */w }
-		} gsr2 16 <20> {
-			bank <0.4;:90>
+		} gsr2 20 <20> {
+			bank <0.4;:180>
 			color $allc
 		} s tprot lerpin 0.3 1 cx 3
 #}

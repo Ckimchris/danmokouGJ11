@@ -56,11 +56,18 @@ public static partial class LocalizedStrings {
 		
 		public static readonly LString sagume_tracker = new LText("サグメ")
 			{ ID = "boss.sagume.tracker" };
-		
-		public static readonly LString tokiko = new LText("Tokiko",
+
+		public static readonly LString enoko = new LText("Enoko",
+			(Locales.JP, "三頭 慧ノ子"))
+			{ ID = "boss.enoko" };
+
+		public static readonly LString enoko_tracker = new LText("Enoko")
+			{ ID = "boss.enoko.tracker" };
+
+			public static readonly LString tokiko = new LText("Tokiko",
 			(Locales.JP, "朱鷺子"))
 			{ ID = "boss.tokiko" };
-		
+
 		public static readonly LString tokiko_tracker = new LText("朱鷺子")
 			{ ID = "boss.tokiko.tracker" };
 		

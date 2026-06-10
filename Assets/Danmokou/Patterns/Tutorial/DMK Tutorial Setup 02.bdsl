@@ -1,0 +1,361 @@
+<#> warnprefix
+## Go to https://dmk.bagoum.com/docs/articles/tbosses.html for the tutorial. 
+pattern({ 
+	##boss(mynewboss)
+})
+phase(0)
+	paction(0)
+		shift-phase-to(4)
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 3)
+phase(0)
+	paction(0)
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	gtrepeat({
+			wait(20)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(fireball-red/, <>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(30)
+				sfx x-fire-burst-3
+				circle
+				root pxy 1 3
+			}, s(polar(3 * t, 30 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(40)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				spread(<-180>)
+			}, s(rvelocity(cx(2))))))
+			async(fireball-red/, <>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				circle
+				root pxy -1 3
+			}, s(polar(3 * t, -45 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(40)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				spread(<-180>)
+			}, s(rvelocity(cx(2))))))
+		})
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 3)
+phase(0)
+	paction(0)
+		async fireball-red/ <2;0:1;0:0> gir2 150 _ <> { 
+			delay(1s)
+			p this
+			bindItr(loop)
+		} gcr {
+			wt	8 4
+			rpp	angle * pm1 p 2.3h
+		} gsr2c 24 {
+			sfx x-fire-burst-3
+		} s polar
+			pivot t 1.5
+				sine 3 2 t
+				* t (3 * pm1(&loop))
+			* pm1 p + 90 * 3 t
+		async fireball-red/ <-2;0:1;0:0> gir2 150 _ <> { 
+			delay(1s)
+			p this
+			bindItr(loop)
+		} gcr {
+			wt	8 4
+			rpp	angle * pm1 p 2.3h
+		} gsr2c 24 {
+			sfx x-fire-burst-3
+		} s polar
+			pivot t 1.5
+				sine 3 2 t
+				* t (3 * pm1(&loop))
+			* pm1 p + 90 * 3 t
+		gtrepeat({
+			delay(4s)
+			wait(100)
+			times(_)
+			alternate(t)
+		}, {
+			async(scircle-red/w, <0;0:0;0:0>, gsrepeat {
+				sfx x-fire-burst-1
+				target(angle, Lplayer)
+			} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+			async(scircle-red/w, <0;0:0;0:0>, gsrepeat {
+				sfx x-fire-burst-1
+				root pxy 2 3
+				target(angle, Lplayer)
+			} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+			async(scircle-red/w, <0;0:0;0:0>, gsrepeat {
+				sfx x-fire-burst-1
+				root pxy -2 3
+				target(angle, Lplayer)
+			} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+			
+		})
+
+##4
+!!{ red { red }	
+<!> type(non, ``)
+<!> hp(15000)
+<!> root(0, 2.5)
+phase(30)
+	paction(0)
+		gtrepeat({
+			wait(1)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async fireball-* <0;0:0.5;0:-90> gcr2 16 _ <35> {
+				wait(10)
+				times(_)
+				for(3s)
+				color { */b */ */w }
+			} gsr2 8 <45> {
+				bank <0.6;:180>
+				sfx x-fire-burst-3
+				color $red
+			} s tprot lerpin 0.3 1 cx 4
+		})
+		gtrepeat({
+			wait(20)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(fireball-red/, <1;0:0;0:180>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(10)
+				sfx x-fire-burst-3
+				spread(<180>)
+			}, s(polar(3 * t, * &lr * 8 t)))))
+			async(fireball-red/, <-1;0:0;0:180>, gcrepeat({
+				wait(10)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(10)
+				sfx x-fire-burst-3
+				spread(<180>)
+			}, s(polar(3 * t, * &lr * 8 t)))))
+		})
+
+		<!> type(spell, `Watch Your Step "Gnarly Hot Stuff"`)
+		<!> hp(20000)
+		<!> root(0, 2.5)
+		phase(60)
+			paction(0)
+				gtrepeat({
+					wait(3s)
+					times(_)
+					wait-child
+					sequential
+				}, {
+					async(stelldecagon-red/w, <4;:>, gcrepeat {
+						times(1)
+						wait(73)
+					} gsrepeat {
+						root pxy [Lplayer].x [Lplayer].y
+						times(24)
+						sfx x-metal
+						circle
+					} s(rvelocity(cxy(0, 0))))
+					async(stelldecagon-red/w, <3;:>, gcrepeat {
+						times(1)
+						wait(73)
+					} gsrepeat {
+						root pxy [Lplayer].x [Lplayer].y
+						times(16)
+						sfx x-metal
+						circle
+					} s(rvelocity(cxy(0, 0))))
+					async(stelldecagon-red/w, <2;:>, gcrepeat {
+						times(1)
+						wait(73)
+					} gsrepeat {
+						root pxy [Lplayer].x [Lplayer].y
+						times(8)
+						sfx x-metal
+						circle
+					} s(rvelocity(cxy(0, 0))))
+					async(stelldecagon-red/w, <1;:>, gcrepeat {
+						times(1)
+						wait(73)
+					} gsrepeat {
+						root pxy [Lplayer].x [Lplayer].y
+						times(5)
+						sfx x-metal
+						circle
+					} s(rvelocity(cxy(0, 0))))
+					sync zonelaser-red* <> gsr2c 1 {
+						color { /b / /w }
+						target(ra, Lplayer)
+						savev2 ploc 0 Lplayer
+					} safelaser 2 { 
+						dsfx
+						s(6)
+					}
+					bullet-control persist {{ stelldecagon-red/w }} cull > t 8
+					gtrepeat({
+						wait(2s)
+						bindItr(loop)
+					}, {
+						async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+							delay(2s)
+							wait(20)
+							times(10)
+							for(3s)
+						}, gsrepeat({
+							times(20)
+							sfx x-fire-burst-3
+							center
+							target ra @0 ploc
+							spread(<30>)
+						}, s(rvelocity(cxy(3, 0))))))
+					})
+					async(dot-red/w, <0;0:0;0:-180>, girepeat({
+						wait(60)
+						times(5)
+						sfx x-fire-burst-2
+					}, gsrepeat({				
+							times(60)
+							circle
+						}, s(rvelocity(cx(2))))
+					))
+				})
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 3)
+phase(0)
+	paction(0)
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 2, 3, t / 6), 0)))
+	})
+	gtrepeat({
+		wait(2s)
+		times(_)
+		wait-child
+		sequential
+	}, {
+		async triangle-blue/w <-90> gcrepeat {
+			times(10)
+			wait 10
+			p this
+		} gsrepeat {
+			times(11)
+			root pxy(rand([Lplayer].x - 2, [Lplayer].x + 2), rand(3, 4))
+			bindArrow
+			preloop {
+				rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+				rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+			}
+		} s(rvelocity(cx(2)))
+	})
+	async gcircle-blue/ <> gcr2 24 _ <> {
+		root cxy 0 4
+		frv2(rx(rand(-4, 4)))
+	} s tpnrot py lerp3(0.5, 1.5, 2.5, 3.5, mod(4, t + brand(0, 4)), -1.4, -1.7, -1.4)
+
+<!> type non `Pathers`
+<!> roott(1, 0, 2)
+!!{ w 10
+!!{ d 1.2
+phase(27)
+	paction(0)
+pool-control {{ stelldecagon-red/w }} destructible false
+	async stelldecagon-red/w <> gir2 12 12 <> {
+		p this
+	} gir2 0 16 <> {
+		p add
+	} {
+		gcr {
+			root pxy [Lplayer].x [Lplayer].y
+			delay 120
+			sfx x-metal
+		} simple nroffset pxy($d * (p2 + 0.5 - $w / 2), -4 + $d * 1) {
+		}
+	}
+	gtrepeat({
+		times(5)
+		delay(4s)
+		wait(4s)
+		wait-child
+		p this
+	}, {
+		gtrepeat({
+			wait-child
+			sequential
+		}, {
+			async lightning-yellow/w <1;:180> gcrepeat {
+				times(1)
+				wait(2s)
+				sfx  { x-lightning }
+			} gsrepeat {
+				times(12)
+				rv2incr(<10>)
+				target(angle, Lplayer)
+				center
+				bindAngle
+			} pather(1, 0.4, nrvelocity(
+					* lerp3(0.0, 0.6, 1.1, 1.3, t, 9, 2, 12)
+					truerotatelerprate(300, rx(1, &angle),
+						stopsampling(0.4, vhome(2, Lplayer)))),
+				{ })
+			async arrowpather-blue/w <1;:180> gcrepeat {
+				times(1)
+				delay(0.5s)
+				sfx({ x-fire-tech-6 x-fire-tech-8 })
+				p add
+			} gsrepeat {
+				times((p1 + 1) * 2)
+				rv2incr(<10>)
+				target(angle, Lplayer)
+				center
+				bindAngle
+			} pather(1, 0.4, nrvelocity(
+					* lerp3(0.0, 0.6, 1.1, 1.3, t, 9, 2, 4)
+					truerotatelerprate(300, rx(1, &angle),
+						stopsampling(3, vhome(2, Lplayer)))),
+				{ })
+		})
+	})

@@ -1,0 +1,844 @@
+pattern ({ 
+	boss gj.enoko
+	bgm {
+		2 stage
+	}
+})
+phase (0)
+	paction (0)
+		shift-phase-to(1)
+
+!!{ me enoko
+
+## 1
+<!> dialogue #{
+<!> root(0, 2.5)
+phase 0
+	saction 0
+		shift-phase-to(9)
+#}
+
+##2
+<!> bosscutin
+<!> type(non, ``)
+<!> hp(15000)
+<!> root(0, 2.5)
+!{ 
+mimapower1()
+sync powerup1 <> poweraura boss1
+	witha 0.9 lerp 0 2 t red red
+	witha 0.9 red
+!}
+phase 30
+	paction(0)
+	$mimapower1
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	gtrepeat({
+			wait(20)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(fireball-red/, <>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(30)
+				sfx x-fire-burst-3
+				circle
+				root pxy 1 3
+			}, s(polar(3 * t, 30 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(40)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				spread(<-180>)
+			}, s(rvelocity(cx(2))))))
+			async(fireball-red/, <>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				circle
+				root pxy -1 3
+			}, s(polar(3 * t, -45 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(40)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				spread(<-180>)
+			}, s(rvelocity(cx(2))))))
+		})
+
+
+##3
+<!> type(spell, `Flare Sign - Lucent Burst "Overheat"`)
+<!> hp(25000)
+<!> roott(2, 0, 2.5)
+phase 60 
+	paction(0)
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	async fireball-red/ <2;0:1;0:0> gir2 150 _ <> { 
+		delay(1s)
+		p this
+		bindItr(loop)
+	} gcr {
+		wt	8 4
+		rpp	angle * pm1 p 2.3h
+	} gsr2c 24 {
+		sfx x-fire-burst-3
+	} s polar
+		pivot t 1.5
+			sine 3 2 t
+			* t (3 * pm1(&loop))
+		* pm1 p + 90 * 3 t
+	async fireball-red/ <-2;0:1;0:0> gir2 150 _ <> { 
+		delay(1s)
+		p this
+		bindItr(loop)
+	} gcr {
+		wt	8 4
+		rpp	angle * pm1 p 2.3h
+	} gsr2c 24 {
+		sfx x-fire-burst-3
+	} s polar
+		pivot t 1.5
+			sine 3 2 t
+			* t (3 * pm1(&loop))
+		* pm1 p + 90 * 3 t
+	gtrepeat({
+		delay(4s)
+		wait(100)
+		times(_)
+		alternate(t)
+	}, {
+		async(scircle-red/w, <0;0:0;0:0>, gsrepeat {
+			sfx x-fire-burst-1
+			target(angle, Lplayer)
+		} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+		async(scircle-red/w, <0;0:0;0:0>, gsrepeat {
+			sfx x-fire-burst-1
+			root pxy 2 3
+			target(angle, Lplayer)
+		} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+		async(scircle-red/w, <0;0:0;0:0>, gsrepeat {
+			sfx x-fire-burst-1
+			root pxy -2 3
+			target(angle, Lplayer)
+		} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+		
+	})
+
+##4
+!!{ red { red }	
+<!> type(non, ``)
+<!> hp(15000)
+<!> root(0, 2.5)
+phase(30)
+	paction(0)
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	gtrepeat({
+		wait(20)
+		times(_)
+		wait-child
+		sequential
+	}, {
+		async(fireball-red/, <1;0:0;0:180>, gcrepeat({
+			wait(20)
+			times(_)
+			for(2s)
+			bindLR ##bindLR is simpler to use than pm1 p
+			##p this
+		}, gsrepeat({
+			times(10)
+			sfx x-fire-burst-3
+			spread(<180>)
+		}, s(polar(3 * t, * &lr * 8 t)))))
+		async(fireball-red/, <-1;0:0;0:180>, gcrepeat({
+			wait(10)
+			times(_)
+			for(2s)
+			bindLR ##bindLR is simpler to use than pm1 p
+			##p this
+		}, gsrepeat({
+			times(10)
+			sfx x-fire-burst-3
+			spread(<180>)
+		}, s(polar(3 * t, * &lr * 8 t)))))
+		async fireball-* <0;0:0.5;0:-90> gcr2 16 _ <35> {
+			wait(10)
+			times(_)
+			for(3s)
+			color { */b */ */w }
+		} gsr2 8 <45> {
+			bank <0.6;:180>
+			sfx x-fire-burst-3
+			color $red
+		} s tprot lerpin 0.3 1 cx 4
+	})
+
+##5
+<!> type(spell, `Mine Sign - Watch Your Step "Gnarly Hot Stuff"`)
+<!> hp(25000)
+<!> root(0, 2.5)
+phase(60)
+	paction(0)
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	gtrepeat({
+		wait(3s)
+		times(_)
+		wait-child
+		sequential
+	}, {
+		async(stelldecagon-red/w, <4;:>, gcrepeat {
+			times(1)
+			wait(73)
+		} gsrepeat {
+			root pxy [Lplayer].x [Lplayer].y
+			times(24)
+			sfx x-metal
+			circle
+		} s(rvelocity(cxy(0, 0))))
+		async(stelldecagon-red/w, <3;:>, gcrepeat {
+			times(1)
+			wait(73)
+		} gsrepeat {
+			root pxy [Lplayer].x [Lplayer].y
+			times(16)
+			sfx x-metal
+			circle
+		} s(rvelocity(cxy(0, 0))))
+		async(stelldecagon-red/w, <2;:>, gcrepeat {
+			times(1)
+			wait(73)
+		} gsrepeat {
+			root pxy [Lplayer].x [Lplayer].y
+			times(8)
+			sfx x-metal
+			circle
+		} s(rvelocity(cxy(0, 0))))
+		async(stelldecagon-red/w, <1;:>, gcrepeat {
+			times(1)
+			wait(73)
+		} gsrepeat {
+			root pxy [Lplayer].x [Lplayer].y
+			times(5)
+			sfx x-metal
+			circle
+		} s(rvelocity(cxy(0, 0))))
+		sync zonelaser-red* <> gsr2c 1 {
+			color { /b / /w }
+			target(ra, Lplayer)
+			savev2 ploc 0 Lplayer
+		} safelaser 2 { 
+			dsfx
+			s(6)
+		}
+		bullet-control persist {{ stelldecagon-red/w }} cull > t 8
+		gtrepeat({
+			wait(2s)
+			bindItr(loop)
+		}, {
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				delay(2s)
+				wait(20)
+				times(10)
+				for(6s)
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				center
+				target ra @0 ploc
+				spread(<30>)
+			}, s(rvelocity(cxy(3, 0))))))
+		})
+		async(dot-red/w, <0;0:0;0:-180>, girepeat({
+			wait(60)
+			times(5)
+			sfx x-fire-burst-2
+		}, gsrepeat({				
+				times(60)
+				circle
+			}, s(rvelocity(cx(2))))
+		))
+	})
+
+##6
+<!> dialogue #{
+	phase 0
+		saction 0
+			dialogue dialogue1.1
+			shift-phase
+#}
+
+##7
+<!> type(non, ``)
+<!> hp(15000)
+!{ 
+mimapower2()
+sync powerup1 <> poweraura boss1
+	witha 0.9 lerp 0 3 t blue teal
+	witha 0.9 blue
+!}
+<!> root(0, 3)
+phase(60)
+	paction(0)
+	$mimapower2
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 2, 3, t / 6), 0)))
+	})
+	gtrepeat({
+		wait(2s)
+		times(_)
+		wait-child
+		sequential
+	}, {
+		async triangle-blue/w <-90> gcrepeat {
+			times(15)
+			wait 10
+			p this
+		} gsrepeat {
+			times(20)
+			sfx x-metal
+			root pxy(rand([Lplayer].x - 2, [Lplayer].x + 2), rand(3, 4))
+			bindArrow
+			preloop {
+				rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+				rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+			}
+		} s(rvelocity(lerpt(1, 2, zero, cx(3))))
+	})
+	async gcircle-blue/ <> gcr2 24 _ <> {
+		root cxy 0 4
+		sfx(x-transform-1)
+		frv2(rx(rand(-4, 4)))
+	} s tpnrot py lerp3(0.5, 1.5, 2.5, 3.5, mod(4, t + brand(0, 4)), -1.4, -1.7, -1.4)
+
+##8
+<!> spellcutin 1
+<!> type(spell, `Ninth Hell Sign - Gnawing at the Great Cage of Ice`)
+<!> hp(25000)
+<!> root(0, 2.5)
+phase 60 #{
+	paction(0)
+	$mimapower2	
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	async(gem-blue/w, <2;:>, gcrepeat {
+				delay(2s)
+				times(_)
+				wait(120)
+			} gsrepeat {
+				root pxy [Lplayer].x [Lplayer].y
+				times(100)
+				sfx x-metal
+				circle
+			} s(rvelocity(cxy(0, 0))))
+			collide sbonsb triangle-blue/w gem-blue/w _ _ {
+				softcull(_, _)
+			} { 
+				restyleeffect(arrow-blue/w, cwheel-blue/w, _)
+			}
+			bullet-control(persist, arrow-blue/w, batch(> t 0.7, {
+				sm(_, async arrow-blue/b <> gcrepeat {
+					wait(12)
+					times(1)
+					rv2incr(<0.4;:>)
+					sfx(x-transform-1)
+				} gsrepeat {
+					times(1)
+					circle
+				} s(rvelocity(px(lerpt(0.3, 1.4, 0, -2.6)))))
+				cull(_)
+			}))
+			bullet-control persist {{ gem-blue/w }} cull > t 1.5
+		gtrepeat({
+			delay(2s)
+			times(_)
+			wait(0.5s)
+			wait-child
+			alternate(t)
+		}, {
+			async triangle-blue/w <1;0:0;0:0> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				sfx x-fire-burst-1
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(3))
+			async triangle-blue/w <-1;0:0;0:0> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				sfx x-fire-burst-1
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(3))
+			async triangle-blue/w <0;0:0;0:0> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				sfx x-fire-burst-1
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(3))
+			async triangle-blue/w <> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				sfx x-fire-burst-1
+				root pxy(([Lplayer].x) + 4, ([Lplayer].y))
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(3))
+			async triangle-blue/w <> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				sfx x-fire-burst-1
+				root pxy(([Lplayer].x) - 4, ([Lplayer].y))
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(3))
+		})
+
+##9
+<!> type(non, ``)
+<!> hp(15000)
+<!> root(0, 2.5)
+!{ 
+	mimapower3()
+	sync powerup1 <> poweraura boss1
+		witha 0.9 lerp 0 3 t yellow yellow
+		witha 0.9 yellow
+!}
+	phase 60 #{
+		paction(0)
+		$mimapower3
+		gtrepeat({
+			bindItr(loop)
+		}, {
+			move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+		})
+		gtrepeat({
+				times(_)
+				wait(2s)
+				wait-child
+				alternate(t)
+			}, {
+				sync *-red* <-1;0:0;0:0> gsrepeat {
+					times(3)
+					color { pather gpather lightning }
+					circle
+				} gsrepeat {
+					times(8)
+					sfx  { x-lightning }
+					target(ra, Lplayer)
+					spread(<360>)
+					color { /b / /w }
+				} pather(2, 1 + sine(1.6, 0.4, t), 
+					roffset(pxy(sine(3, 2, t), 4 * t)), {
+						hueshift(120 * t)
+				})
+	
+				sync *-red* <1;0:0;0:0> gsrepeat {
+					times(3)
+					color { pather gpather lightning }
+					circle
+				} gsrepeat {
+					times(8)
+					sfx  { x-lightning }
+					target(ra, Lplayer)
+					spread(<360>)
+					color { /b / /w }
+				} pather(2, 1 + sine(1.6, 0.4, t), 
+					roffset(pxy(4 * t, sine(3, 2, t))), {
+						hueshift(120 * t)
+				})
+			})
+			async empty <> gcr2 360 _ <;:60h> {
+				p this
+			} gsr2c 4 {
+				p add
+			} s polar
+				* 1.3 t
+				* pm1mod p1 softmaxshiftt 0.4 1 0 (* 25 t)
+			bullet-control persist empty savev2 el p loc _
+			async inode <> gcr2 360 _ <> { 
+				p this 
+				root zero
+			} gsr2 4 <> { 
+				p add
+				alternate p1 
+			} { 
+					summons offset zero @ el p
+						paction 0
+							sync scircle-yellow/w <> world s offset zero @ el p
+							async gcircle-yellow/b <0.1;:> gcr2 120 _ <> {
+								delay	90
+								while	onscreen loc
+								sfx	x-fire-burst-1
+								##I think this bullet is better homing.
+							} gsr2c 4 {
+							} s tprot lerpin 0 1.5 ss 0 vhome 1 Lplayer ##cx 0.8
+							break
+					summons offset zero @ el p
+						paction 0
+							sync scircle-yellow/b <> world  s offset zero @ el p
+							async gcircle-yellow/w <0.1;:> gcr2 120 _ <20h> {
+								delay	90
+								while	onscreen loc
+								sfx	x-fire-burst-2
+							} gsr2c 4 {
+							} s tprot lerpin 0 1.5 cx 2.2
+							break
+				}
+	
+	
+	#}
+	
+##10
+<!> spellcutin 2
+<!> type(spell, `Second Hell Sign - Warped Fangs Wreathed in Lightning`)
+<!> hp(25000)
+!{ 
+mimapower3()
+sync powerup1 <> poweraura boss1
+	witha 0.9 lerp 0 3 t yellow yellow
+	witha 0.9 yellow
+!}
+<!> root(0, 2.5)
+phase 60 #{
+	paction 0
+	gtrepeat({
+		times(_)
+		wait(2s)
+		wait-child
+		sequential
+	}, {
+		async(_, <>, girepeat {
+			times(1)
+			delay(1s)
+		} {
+			gcrepeat {
+				colorr lightning-yellow/
+				root pxy 3.5 4
+				times(5)
+				rv2incr(<7.5>)
+				target(angle, Lplayer)
+				center
+				sfx({ x-lightning })
+			} pather(1, 1, tprot cx 8, { 
+				sm async gem-yellow/b <> gcrepeat {
+					wait(20)
+					cancel(offscreen(loc))
+					times(_)
+					face(velocity)
+				} s(rvelocity(cx(2)))
+			})
+		})
+		async(_, <>, girepeat {
+			times(1)
+			delay(1s)
+		} {
+			gcrepeat {
+				colorr lightning-yellow/
+				root pxy -3.5 4
+				times(5)
+				rv2incr(<7.5>)
+				target(angle, Lplayer)
+				center
+				sfx({ x-lightning })
+			} pather(1, 1, tprot cx 8, { 
+				sm async gem-yellow/b <> gcrepeat {
+					wait(20)
+					cancel(offscreen(loc))
+					times(_)
+					face(velocity)
+				} s(rvelocity(cx(2)))
+			})
+		})
+		gtrepeat({
+			delay(1s)
+			wait-child
+			sequential
+		}, {
+			savev2 ploc 0 Lplayer
+			move-target 1 in-sine pxy([@0 ploc].x, 3)
+			sync zonelaser-yellow* <-90> gsr2c 1 {
+				color { /b / /w }
+			} safelaser 2 { 
+				dsfx
+				s(4)
+			}
+			async(_, <-90>, girepeat {
+				delay(1s)
+			} {
+				gcrepeat {
+					colorr lightning-yellow/w
+					sfx({ x-lightning })
+					times(3)
+					rv2incr(<5>)
+					center
+				} pather(1, 1, tprot cx 10, { 
+					sm async amulet-yellow/b <> gcrepeat ({
+						wait(17)
+						times(_)
+						face(rotvel)
+					}, s(rvelocity(lerpt(1, 2, zero, cx(4)))))
+				})
+				gcrepeat {
+					colorr lightning-yellow/w
+					sfx({ x-lightning })
+					times(3)
+					rv2incr(<10>)
+					center
+				} pather(1, 1, tprot cx 10, { 
+					sm async amulet-yellow/b <> gcrepeat ({
+						wait(17)
+						times(_)
+						face(rotvel)
+					}, s(rvelocity(lerpt(1, 2, zero, cx(-4)))))
+				})
+			})
+			move-target 0.5 in-sine pxy([@0 ploc].x,  -4)
+		})
+		gtrepeat({
+			wait-child
+			sequential
+		}, {
+			savev2 ploc 0 Lplayer
+			move-target 1 in-sine pxy([@0 ploc].x, -4)
+			sync zonelaser-yellow* <90> gsr2c 1 {
+				color { /b / /w }
+			} safelaser 2 { 
+				dsfx
+				s(4)
+			}
+			async(_, <90>, girepeat {
+				delay(0.5s)
+			} {
+				gcrepeat {
+					colorr lightning-yellow/w
+					sfx({ x-lightning })
+					times(3)
+					rv2incr(<5>)
+					center
+				} pather(1, 1, tprot cx 10, { 
+					sm async amulet-yellow/b <> gcrepeat ({
+						wait(17)
+						times(_)
+						face(rotvel)
+					}, s(rvelocity(lerpt(1, 2, zero, cx(4)))))
+				})
+				gcrepeat {
+					colorr lightning-yellow/w
+					sfx({ x-lightning })
+					times(3)
+					rv2incr(<10>)
+					center
+				} pather(1, 1, tprot cx 10, { 
+					sm async amulet-yellow/b <> gcrepeat ({
+						wait(17)
+						times(_)
+						face(rotvel)
+					}, s(rvelocity(lerpt(1, 2, zero, cx(-4)))))
+				})
+			})
+			move-target 0.5 in-sine pxy([@0 ploc].x, 3)
+		})
+	})
+
+##11
+<!> spellcutin 3
+<!> type(timeout, `Mine Sign - Fastest Wolves and Slow and Steady Doggies`)
+!!{ w 10
+!!{ d 1.2
+!{ 
+mimapower3()
+sync powerup1 <> poweraura boss1
+	witha 0.9 lerp 0 3 t yellow yellow
+	witha 0.9 yellow
+!}
+<!> root(0, 2.5)
+phase(32)
+	paction(0)
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+pool-control {{ stelldecagon-red/w }} destructible false
+	async stelldecagon-red/w <> gir2 12 12 <> {
+		p this
+	} gir2 0 16 <> {
+		p add
+	} {
+		gcr {
+			root pxy [Lplayer].x [Lplayer].y
+			delay 120
+			sfx x-metal
+		} simple nroffset pxy($d * (p2 + 0.5 - $w / 2), -4 + $d * p1) {
+		}
+	}
+	gtrepeat({
+		times(6)
+		delay(4s)
+		wait(4s)
+		wait-child
+		p this
+	}, {
+		gtrepeat({
+			wait-child
+			sequential
+		}, {
+			async lightning-yellow/w <1;:180> gcrepeat {
+				times(1)
+				wait(2s)
+				sfx  { x-lightning }
+			} gsrepeat {
+				times(12)
+				rv2incr(<10>)
+				target(angle, Lplayer)
+				center
+				bindAngle
+			} pather(1, 0.4, nrvelocity(
+					* lerp3(0.0, 0.6, 1.1, 1.3, t, 9, 2, 12)
+					truerotatelerprate(300, rx(1, &angle),
+						stopsampling(0.4, vhome(2, Lplayer)))),
+				{ })
+			async arrowpather-blue/w <1;:180> gcrepeat {
+				times(1)
+				delay(0.5s)
+				sfx({ x-fire-tech-6 x-fire-tech-8 })
+				p add
+			} gsrepeat {
+				times((p1 + 1) * 2)
+				rv2incr(<10>)
+				target(angle, Lplayer)
+				center
+				bindAngle
+			} pather(1, 0.4, nrvelocity(
+					* lerp3(0.0, 0.6, 1.1, 1.3, t, 9, 2, 4)
+					truerotatelerprate(300, rx(1, &angle),
+						stopsampling(3, vhome(2, Lplayer)))),
+				{ })
+		})
+	})
+
+##12
+<!> spellcutin 3
+<!> type(spell, `Roar of the King - The Fangs of the Three Headed Yamainu`)
+<!> hp(50000)
+!!{ blue { blue }	
+!{ 
+mimapower4()
+sync powerup1 <> poweraura boss1
+	witha 0.9 lerp 0 3 t yellow blue
+	witha 0.9 red
+!}
+<!> root(0, 2.5)
+phase(100)#{
+	paction(0)
+		$mimapower4
+		gtrepeat({
+			bindItr(loop)
+		}, {
+			move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+		})
+		gtrepeat({
+			delay(2s)
+		}, 
+		{
+			async lightning-* <> gcr2 150 _ <20h> {
+				delay 1.5s
+				color { red* pink* }
+				p this
+				sfx  { x-lightning }
+			} gsr2 18 <20> {
+				color { /w / }
+			} pather 1 1
+				polar
+					* 4 t
+					* pm1mod p * 10 sine(1.6, 0.4, t)
+			{ }
+			async gem-* <1;0:0.2;0:-90> gcr2 16 _ <35> {
+				color { */b */ */w }
+			} gsr2 8 <45> {
+				bank <0.4;:180>
+				sfx x-fire-burst-2
+				color $blue
+			} s tprot lerpin 0.3 1 cx 3
+			async fireball-* <-1;0:0.5;0:-90> gcr2 16 _ <35> {
+				color { */b */ */w }
+			} gsr2 4 <90> {
+				bank <0.6;:180>
+				sfx x-fire-burst-3
+				color $red
+			} s tprot lerpin 0.3 1 cx 4
+		})
+#}
+
+##11
+<!> dialogue #{
+	phase 0
+		saction 0
+			dialogue dialogue1.2
+			shift-phase
+	#}
+	

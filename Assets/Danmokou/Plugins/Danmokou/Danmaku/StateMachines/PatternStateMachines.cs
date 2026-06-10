@@ -409,8 +409,11 @@ public class PhaseSM : SequentialSM {
         }
         GameManagement.Instance.PhaseEnd(pc);
         if (pc.StandardCardFinish && !smh.Cancelled && ctx.Boss != null && pc.CaptureStars.HasValue) {
-            Object.Instantiate(GameManagement.References.prefabReferences.phasePerformance)
-                .GetComponent<PhasePerformance>().Initialize($"{ctx.Boss.CasualName} / Boss Card", pc);
+            if (pc.phase.PhaseType != 0)
+                {
+                    Object.Instantiate(GameManagement.References.prefabReferences.phasePerformance)
+                        .GetComponent<PhasePerformance>().Initialize($"{ctx.Boss.CasualName} / Boss Card", pc);
+                }
             return (EndOfCardDelayTime, RUWaitingUtils.WaitForUnchecked(smh.Exec, smh.cT, EndOfCardDelayTime, false));
         }
         return (0, Task.CompletedTask);

@@ -1,0 +1,41 @@
+script
+sl mima
+sr enoko
+place l1 mima
+place r1 enoko
+srce normal
+. `Tch... Maybe I've bitten off more than I can chew here.`
+z
+srce normal
+. `You know, here was I thinking I'd understood magicians and that you'd be managable, but here you are seemlessly dodging all I have to give. Maybe I should just accept I'm not on my game tonight and go..."`
+z
+slce normal
+. `I thought you said you were going to fight me with the pride of your precious little clan? What happened to that?`
+z
+srce normal
+. `Call it my survival instincts kicking in. Or maybe I’m just buying myself some time to think. You never kn-`
+z
+slce normal
+. `Do not shoot me your excuses.`
+z
+slce normal
+. `I've spent a lot of time in hell these past couple decades. I inevitably heard whispers of you, your name, and how you came into the being you are today.`
+z
+slce normal
+. `When I heard someone like you was hanging around Marisa, I thought she'd found not just another valiant friend, but a protector.`
+z
+slce normal
+. `Someone that could keep her safe if she catches herself in something too dangerous.`
+z
+slce normal
+. `But I don't see a guardian in front of my eyes. I see a mere coward.`
+z
+srce normal
+. `… You wouldn't dare go there.`
+z
+srce normal
+. `How dare you accuse me of something so… insane. I'd never abandon a friend.`
+z
+srce normal
+. `That's it, I've had it. Playtime is over.`
+z

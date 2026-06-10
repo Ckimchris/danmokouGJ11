@@ -13,19 +13,7 @@ public interface IScoreExtendFeature : IInstanceFeature {
 
 public class ScoreExtendFeature : BaseInstanceFeature, IScoreExtendFeature {
     public static readonly long[] scoreLives = {
-        2000000,
-        5000000,
-        10000000,
-        15000000,
-        20000000,
-        25000000,
-        30000000,
-        40000000,
-        50000000,
-        60000000,
-        70000000,
-        80000000,
-        100000000
+        999999999
     };
     private InstanceData Inst { get; }
     private Evented<int> nextScoreLifeIndex = new(0);

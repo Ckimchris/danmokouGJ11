@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c69c47d5153434b9e92db6fd66891d7, type: 3}
+  m_Name: Ability Mima Thousand Seals
+  m_EditorClassIdentifier: 
+  title:
+    useReference: 0
+    reference: 
+    hardcoded:
+      en: Complete Darkness ~ A Thousand Seals
+      jp: 
+  shortTitle:
+    useReference: 0
+    reference: 
+    hardcoded:
+      en: 'Bomb: A Thousand Seals'
+      jp: 
+  cutin: {fileID: 6569664309894581897, guid: 46493bf1b87e2ca4e9f48b9743cbb783, type: 3}
+  spellTitle: {fileID: 3197345815071301053, guid: f59b1fcc83200c345a2b26a22a136b0a,
+    type: 3}
+  spellColor1: {r: 0.07778571, g: 0.7169812, b: 0.15220681, a: 1}
+  spellColor2: {r: 0.6431373, g: 0.14901961, b: 0.4117647, a: 1}
+  sm: {fileID: 4900000, guid: 96f9fbcbd9fc7d941a1adcd6f503793d, type: 3}

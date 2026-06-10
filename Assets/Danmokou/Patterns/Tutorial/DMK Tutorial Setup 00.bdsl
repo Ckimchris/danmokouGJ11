@@ -1,16 +1,339 @@
 <#> warnprefix
-## Go to https://dmk.bagoum.com/docs/articles/t01.html for the tutorial. 
-pattern({ })
+## Go to https://dmk.bagoum.com/docs/articles/tbosses.html for the tutorial. 
+pattern({ 
+	##boss(mynewboss)
+})
 phase(0)
 	paction(0)
-		shift-phase-to(1)
+		shift-phase-to(8)
 		
-## This is phase #1. 
-<!> type(non, `Hello World`)
+<!> type(non, `This is a nonspell`)
 <!> hp(4000)
+<!> root(0, 2)
 phase(0)
 	paction(0)
-		position(0, 1)
-		
-		
+		gtrepeat({
+			wait(20)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(fireball-red/, <-1;0:0;0:0>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(20)
+				circle
+			}, s(polar(3 * t, 30 * t)))))
+			async(fireball-red/, <1;0:0;0:0>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(20)
+				circle
+			}, s(polar(3 * t, -30 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(30)
+				circle
+			}, s(polar(3 * t, * &lr * 8 t)))))
+		})
 
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+		async fireball-red/ <1;0:1;0:0> gir2 150 _ <> { 
+			p this
+		} gcr {
+			wt	8 4
+			rpp	angle * pm1 p 2.3h
+        } gsr2c 24 {
+        } s polar
+			pivot t 1.5
+				sine 3 2 t
+				* t -3
+			* pm1 p + 90 * -3 t
+		async fireball-red/ <-1;0:1;0:0> gir2 150 _ <> { 
+			p this
+		} gcr {
+			wt	8 4
+			rpp	angle * pm1 p 2.3h
+        } gsr2c 24 {
+        } s polar
+			pivot t 1.5
+				sine 3 2 t
+				* t 3
+			* pm1 p - 90 * 3 t
+		async(scircle-red/w, <>, girepeat {
+			times(1)
+		} gcrepeat {
+			times(_)
+			wait(100)
+		} gsrepeat {
+			target(ra, Lplayer)
+		} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+		gtrepeat({
+			wait(20)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(fireball-red/, <1;0:0;0:180>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				spread(<180>)
+			}, s(polar(3 * t, * &lr * 8 t)))))
+			async(fireball-red/, <-1;0:0;0:180>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				spread(<180>)
+			}, s(polar(3 * t, * &lr * 8 t)))))
+			async(fireball-red/, <0;0:0;0:180>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				spread(<180>)
+			}, s(polar(3 * t, * &lr * 8 t)))))
+		})
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+		async fireball-red/ <1;0:1;0:0> gir2 150 _ <> { 
+			p this
+		} gcr {
+			wt	8 4
+			rpp	angle * pm1 p 2.3h
+        } gsr2c 24 {
+        } s polar
+			pivot t 1.5
+				sine 3 2 t
+				* t -3
+			* pm1 p + 90 * -3 t
+		async fireball-red/ <-1;0:1;0:0> gir2 150 _ <> { 
+			p this
+		} gcr {
+			wt	8 4
+			rpp	angle * pm1 p 2.3h
+        } gsr2c 24 {
+        } s polar
+			pivot t 1.5
+				sine 3 2 t
+				* t 3
+			* pm1 p - 90 * 3 t
+		async(scircle-red/w, <>, girepeat {
+			times(1)
+		} gcrepeat {
+			times(_)
+			wait(100)
+		} gsrepeat {
+			target(ra, Lplayer)
+		} s(rvelocity(lerpt(0, 1, zero, cx(4)))))
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+		gtrepeat({
+			wait(3s)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(stelldecagon-red/w, <4;:>, gcrepeat {
+				times(1)
+				wait(73)
+			} gsrepeat {
+				root pxy [Lplayer].x [Lplayer].y
+				times(24)
+				circle
+			} s(rvelocity(cxy(0, 0))))
+			async(stelldecagon-red/w, <3;:>, gcrepeat {
+				times(1)
+				wait(73)
+			} gsrepeat {
+				root pxy [Lplayer].x [Lplayer].y
+				times(16)
+				circle
+			} s(rvelocity(cxy(0, 0))))
+			async(stelldecagon-red/w, <2;:>, gcrepeat {
+				times(1)
+				wait(73)
+			} gsrepeat {
+				root pxy [Lplayer].x [Lplayer].y
+				times(8)
+				circle
+			} s(rvelocity(cxy(0, 0))))
+			async(stelldecagon-red/w, <1;:>, gcrepeat {
+				times(1)
+				wait(73)
+			} gsrepeat {
+				root pxy [Lplayer].x [Lplayer].y
+				times(5)
+				circle
+			} s(rvelocity(cxy(0, 0))))
+			sync zonelaser-red* <> gsr2c 1 {
+				color { /b / /w }
+				target(ra, Lplayer)
+			} safelaser 2 { 
+			}
+			bullet-control persist {{ stelldecagon-red/w }} cull > t 4
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				delay(2s)
+				wait(10)
+				times(_)
+				target(ra, Lplayer)
+				for(3s)
+				bindItr(i1)
+			}, gsrepeat({
+				times(12)
+				rv2incr(a(pm1(&i1) * 4))
+			}, s(rvelocity(cxy(3, 0))))))
+		})
+
+
+
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+
+		async(gem-blue/w, <2;:>, gcrepeat {
+				times(_)
+				wait(120)
+			} gsrepeat {
+				root pxy [Lplayer].x [Lplayer].y
+				times(100)
+				circle
+			} s(rvelocity(cxy(0, 0))))
+			collide sbonsb triangle-blue/w gem-blue/w _ _ {
+				softcull(_, _)
+			} { 
+				restyleeffect(arrow-blue/w, cwheel-blue/w, _)
+			}
+			bullet-control(persist, arrow-blue/w, batch(> t 0.7, {
+				sm(_, async arrow-blue/b <> gcrepeat {
+					wait(12)
+					times(1)
+					rv2incr(<0.4;:>)
+					sfx(x-transform-1)
+				} gsrepeat {
+					times(1)
+					circle
+				} s(rvelocity(px(lerpt(0.3, 1.4, 0, -2.6)))))
+				cull(_)
+			}))
+			bullet-control persist {{ gem-blue/w }} cull > t 1.5
+		gtrepeat({
+			times(_)
+			wait(0.5s)
+			wait-child
+			alternate(t)
+		}, {
+			async triangle-blue/w <1;0:0;0:0> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(6))
+			async triangle-blue/w <-1;0:0;0:0> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(6))
+			async triangle-blue/w <0;0:0;0:0> gcrepeat {
+				p this
+			} gsrepeat {
+				times(10)
+				target(ra, Lplayer)
+				bindArrow
+				preloop {
+					rv2.rx =f ([&brv2].rx + -0.1 * &aixd)
+					rv2.ry =f ([&brv2].ry + 0.1 * &aiyd)
+				}
+			} s rvelocity(px(6))
+		})
+
+!!{ blue { blue }	
+!!{ red { red }	
+<!> type(non, `This is a nonspell`)
+<!> hp(4000)
+<!> root(0, 2)
+phase(0)
+	paction(0)
+	async lightning-* <> gcr2 150 _ <20h> {
+				delay 1.5s
+				color { red* pink* }
+				p this
+				sfx  { x-lightning }
+			} gsr2 18 <20> {
+				color { /w / }
+			} pather 1 1
+				polar
+					* 4 t
+					* pm1mod p * 10 sine(1.6, 0.4, t)
+			{ }
+		async gem-* <1;0:0.2;0:-90> gcr2 16 _ <35> {
+			color { */b */ */w }
+		} gsr2 8 <45> {
+			bank <0.4;:180>
+			color $blue
+		} s tprot lerpin 0.3 1 cx 3
+		async fireball-* <-1;0:0.2;0:-90> gcr2 16 _ <35> {
+			color { */b */ */w }
+		} gsr2 4 <90> {
+			bank <0.6;:180>
+			sfx x-fire-burst-3
+			color $red
+		} s tprot lerpin 0.3 1 cx 4
+
+<!> type(non, `This is a nonspell`)
+<!> hp(20000)
+<!> root(0, 2)
+phase(0)
+	paction(0)

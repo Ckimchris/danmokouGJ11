@@ -1,0 +1,90 @@
+pattern ({ 
+	boss gj.enoko
+	bgm {
+		2 stage
+	}
+})
+phase (0)
+	paction (0)
+		shift-phase-to(2)
+
+!!{ me enoko
+
+## 1
+<!> dialogue #{
+<!> root(0, 2.5)
+phase 0
+	saction 0
+		dialogue dialogue1.0
+		shift-phase-to(2)
+#}
+
+##2
+<!> bosscutin
+<!> type(non, ``)
+<!> hp(15000)
+<!> root(0, 2.5)
+!{ 
+mimapower1()
+sync powerup1 <> poweraura boss1
+	witha 0.9 lerp 0 2 t red red
+	witha 0.9 red
+!}
+phase 30 #{
+	paction(0)
+	$mimapower1
+	gtrepeat({
+		bindItr(loop)
+	}, {
+		move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+	})
+	gtrepeat({
+			wait(20)
+			times(_)
+			wait-child
+			sequential
+		}, {
+			async(fireball-red/, <>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(30)
+				sfx x-fire-burst-3
+				circle
+				root pxy 1 3
+			}, s(polar(3 * t, 30 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(40)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				spread(<-180>)
+			}, s(rvelocity(cx(2))))))
+			async(fireball-red/, <>, gcrepeat({
+				wait(20)
+				times(_)
+				for(2s)
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				circle
+				root pxy -1 3
+			}, s(polar(3 * t, -45 * t)))))
+			async(fireball-red/, <0;0:0;0:0>, gcrepeat({
+				wait(40)
+				times(_)
+				for(2s)
+				bindLR ##bindLR is simpler to use than pm1 p
+				##p this
+			}, gsrepeat({
+				times(20)
+				sfx x-fire-burst-3
+				spread(<-180>)
+			}, s(rvelocity(cx(2))))))
+		})
+#}

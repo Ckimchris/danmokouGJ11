@@ -7,7 +7,7 @@ phase 0
 phase 0
     paction 0
 		position 0 0
-		poolcontrol(fireball*, destructible(false))
+		poolcontrol(fireball*, 'false))
 		poolcontrol(fireball*, damage(0))
 		poolcontrol(fireball*, nograze)
 		# Without a "cooldown" limiter, this will run once per frame while the bullet is colliding

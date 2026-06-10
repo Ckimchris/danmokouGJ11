@@ -1,0 +1,70 @@
+script
+place l1 mima
+sl mima
+slce normal
+. `Hmm. How many years has it been since I last set foot in the Forest of Magic?`
+z
+slce normal
+. `Gah. I've lost count. I guess this must be the pain of feeling old.`
+z
+slce normal
+. `I casted my very first spell here, but I can't remember what it felt like anymore… Whatever. Now's not worth the time reminiscing. I've got a target to find.`
+z
+place r1 enoko
+setstandopacity enoko 0
+fadestandin enoko 1
+sr enoko
+srce normal
+. `Whoa! What's with that funny stick you got there? I've never seen anything like it before.`
+z
+slce normal
+. `(And just like that, the target comes to me. Is finding people really this easy in Gensokyo these days?)`
+z
+slce normal 
+. `Ahem. It is not a mere stick, but a powerful staff, a catalyst for some of the greatest magic in all of Gensokyo!`
+z
+slce normal
+. `Now, pray tell little dog, do you mind telling me what are you doing right now?`
+z
+srce normal
+. `If I'm supposed to be giving you great respect here, surely you could at least try not to treat me like a pet here, right?`
+z
+srce normal 
+. `And I'm just wandering around the Forest of Magic, catching some nice air. Are you not here for the same?`
+z
+slce normal
+. `(Calling the air here nice is certainly something. Canines truly have a warped taste.)`
+z
+slce normal
+. `As a matter of fact, I am here for something specific. You.`
+z
+srce normal
+. `Huh? What the heck do you need from someone like me?`
+z
+srce normal
+. `And, wait a moment. That means you already know my name, don't you.`
+z
+slce normal
+. `Yes indeed, Enoko Mitsugashira, I do.`
+z
+slce normal
+. `As for what I want from you, I want a duel.`
+z
+slce normal
+. `I've heard you've been playing around with a certain Marisa Kirisame, who might just happen to be an old prodigy of mine.`
+z
+slce normal
+. `Marisa likes hanging around strong folk, so I want to see your strength for myself. Simple as that.`
+z
+srce normal
+. `Well, putting aside how strange you are, and how I'm not quite sure where you got my name… A duel, huh? Well, if you really are Marisa's old mentor, then you put up a great fight, huh?`
+z
+srce normal
+. `Count me in! I swear on my pride as the right-hand of the wolf spirits to not take it easy on you!`
+z
+slce normal
+. `Ha. That's just what I want to hear.`
+z
+slce normal
+. `Show me your power, fabled cerberus!`
+z

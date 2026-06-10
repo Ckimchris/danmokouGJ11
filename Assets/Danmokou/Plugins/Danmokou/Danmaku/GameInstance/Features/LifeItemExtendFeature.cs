@@ -14,20 +14,13 @@ public interface ILifeItemFeature : IInstanceFeature {
 
 public class LifeItemFeature : BaseInstanceFeature, ILifeItemFeature {
     public static readonly int[] pointLives = {
-        69,
-        141,
-        224,
-        314,
-        420,
-        618,
-        840,
-        1084,
-        1337,
-        1618,
-        2048,
-        2718,
-        3142,
-        9001,
+        50,
+        100,
+        150,
+        200,
+        250,
+        300,
+        999,
         int.MaxValue
     };
     private InstanceData Inst { get; }

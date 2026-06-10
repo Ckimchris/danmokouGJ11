@@ -1,0 +1,68 @@
+script
+sl mima
+sr enoko
+place l1 mima
+place r1 enoko
+srce normal
+. `I… wow, okay. I need a moment to catch my breath.`
+z
+srce normal
+. `It seems even when I'm trying my hardest, I'm still not enough to stand up against such a master magician.`
+z
+srce normal
+. `Maybe I'm really not such a great guardian after all… Do you want me to stop bothering Marisa?`
+z
+slce normal
+. `No.`
+z
+slce normal
+. `Perhaps you still lost in the end, but I must admit. What you showed me when you put your mind into it left me convinced.`
+z
+slce normal
+. `I'd say you still have more to practice, but I was originally right to view you as strong.`
+z
+slce normal
+. `Marisa has good company with someone like you. Perhaps she could even help you hone your skills into something sharper.`
+z
+srce normal
+. `Wow, really? You mean it?`
+z
+slce normal
+. `You're not dumb. I think you could tell if I was lying.`
+z
+srce normal
+. `Woof…`
+z
+srce normal
+. `Yeah, you're right, I've had a training partner right in front of me the whole time.`
+z
+srce normal
+. `I'll be sure to ask her if she's willing to help me. I'm not used to trying to rely on others for something.`
+z
+srce normal
+. `I might be a wolf, but I was never much of the one to hang around packs until recently, ha.`
+z
+srce normal
+. `In any case, thanks for the fight and your help, Mima. Maybe one day I can hunt you down for a rematch, huh?`
+z
+slce normal
+. `Haha. You might have a hard time finding me, but maybe you can consider that a part of the challenge.`
+z
+slce normal
+. `If you want though, I'll be waiting for the day.`
+z
+srce normal
+. `You can count on it! See you around, Mima.`
+z #after this point onwards enoko shouldn't be loaded anymore. idk how that works tho lol
+slce normal
+. `(And off she goes. The wolf runs off in the night to greater pastures.)`
+z
+slce normal
+. `(Gah… Did I just… emotionally support someone?! What the hell kind of vengeful spirit thing is that to do?)`
+z
+slce normal
+. `(Could it be that I'm really losing my touch after all these years?)`
+z
+slce normal
+. `(… Well, there's no use in wallowing over spilled potion. Perhaps there could be benefits to this kind of lifestyle.)`
+z

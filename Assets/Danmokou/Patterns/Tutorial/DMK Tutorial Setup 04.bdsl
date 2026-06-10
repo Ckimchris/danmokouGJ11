@@ -1,0 +1,65 @@
+<#> strict(none)
+## Go to https://dmk.bagoum.com/docs/articles/tbosses.html for the tutorial. 
+pattern({ 
+	##boss(mynewboss)
+})
+phase(0)
+	paction(0)
+		shift-phase-to(1)
+
+!!{ me reimu
+
+!!{ reimuc1 { red black }
+
+!{ power1()
+sync powerup1 <> poweraura boss1
+	witha 0.9 red
+	rgba 0.9 0.9 0.9 0.9
+!}
+!{ 
+power1long()
+sync powerup1 <> powerup x-powerup-1
+	witha 0.9 lerp 0 3.7 t red rgb 1 1 1
+	3 5
+!}
+	
+##1. Spiral-to-straight
+phase 0 #{
+	paction 0
+		$power1
+    paction 0
+	bullet-control persist amulet-black/ restyleeffect amuletreimu-black/w cwheel-black/b > t 2.1
+	bullet-control persist amulet-red/ restyleeffect amuletreimu-red/w cwheel-red/b > t 2.1
+	async gdlaser-*/ <> gcr2 lerpt 0 1 360 300 _ <> {
+		delay 2s
+		p this
+	} gsr2 36 <;.75:> {
+			root pxy -6 [Lplayer].y
+			center
+			colorf { red black } + &pi t
+		} laser null lerp(0, 3, p, 1.5, 1) 1 { dsfx }
+	gtr {
+		wt lerpt(0, 5, 90, 0) _
+		wait-child
+		p this
+		rpp <5c>
+	} saction 0 :3
+		sync amulet-** <;0.67:180> gsr2c 5 {
+				sfx x-fire-burst-1
+				colorf { red black } p
+!!{ rpt floor * ^ dl 0.7 18
+!!{ dx / 4 $rpt
+			} gsr2 $rpt rx $dx {
+				p this
+				center
+			} gsr2 2 <> { 
+				color { / /b }
+				p add
+			} s tprot lerpt 0.6 1.3
+				py lerpt 0 2 0 -2
+				* if (= p2 1) 1 (lerpt 2 2.4 1 -1.2) rx
+					+ -2.5 * 0.5 p2
+					atan2 (* 0.7 pm1 p2)  * $dx (- p1 / $rpt 2)
+		~ _ 2.1
+			sfx x-transform-2
+		move-target 1 io-sine pxy (* pm1 p + 0.5 * 0.015 p) y

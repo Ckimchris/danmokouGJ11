@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a92301f86b4dd690557658c7243e8b, type: 3}
+  m_Name: EnokoBossConfig
+  m_EditorClassIdentifier: 
+  boss: {fileID: 798634255943005500, guid: e64e17ca8666ca342964bc4bdd4dcb26, type: 3}
+  localizationBaseKey: boss.enoko
+  m_casualName:
+    useReference: 1
+    reference: 
+    hardcoded:
+      en: Enoko Mitsugashira
+      jp: Enoko Mitsugashira
+  m_bossPracticeName:
+    useReference: 1
+    reference: 
+    hardcoded:
+      en: Enoko Mitsugashira
+      jp: Enoko Mitsugashira
+  replayNameOverride:
+    useReference: 1
+    reference: 
+    hardcoded:
+      en: Enoko Mitsugashira
+      jp: Enoko Mitsugashira
+  bottomTrackerNameOverride:
+    useReference: 1
+    reference: 
+    hardcoded:
+      en: Enoko Mitsugashira
+      jp: Enoko
+  stateMachine: {fileID: 2811297602134710623, guid: 544dbb0a82954ce4baa2cfa81e577026,
+    type: 3}
+  key: gj.enoko
+  colors: {fileID: 11400000, guid: b30d94023b9a3044a835622a09ea2f88, type: 2}
+  cardRotator: 
+  spellRotator: 
+  profile:
+    leftSidebar: {fileID: 0}
+    rightSidebar: {fileID: 0}
+  defaultNonBG: {fileID: 350828585358997307, guid: 44f5491d2b17c344c8bd186f12b0c72e,
+    type: 3}
+  defaultSpellBG: {fileID: 5180723301924424041, guid: 8bff78fdceab558419b1428bab2a2f57,
+    type: 3}
+  defaultIntoSpellTransition: {fileID: 11400000, guid: 9b0abf82e07299741a4d64ecd57ff7e6,
+    type: 2}
+  defaultIntoNonTransition: {fileID: 11400000, guid: 23d9a9fbcd555004c9905acab3bc372a,
+    type: 2}
+  bossCutin: {fileID: 3132015280524051594, guid: 910475a6ffec2c24d8f8b5031e327a13,
+    type: 3}
+  spellCutins:
+  - {fileID: 649133156462160341, guid: ad5d0b3139236b04aa709d38e2d57c03, type: 3}
+  - {fileID: 2670329179863422520, guid: 25bc1125d8f17444f9358872f7d0b7b9, type: 3}
+  - {fileID: 6647798063455850144, guid: 18a5d8b88484c114db39090f34bae7fc, type: 3}
+  - {fileID: 4451749907438624546, guid: 184926d1a61d77549a290199e411812a, type: 3}

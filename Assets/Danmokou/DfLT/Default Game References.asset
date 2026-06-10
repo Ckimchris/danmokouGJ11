@@ -23,7 +23,7 @@ MonoBehaviour:
   tracks: []
   items: {fileID: 11400000, guid: 18e6de6e951f4114e8823af9e617bff7, type: 2}
   prefabReferences: {fileID: 11400000, guid: 842bcc7c616103e4c9880c49f9735bb4, type: 2}
-  suzunoyaReferences: {fileID: 0}
+  suzunoyaReferences: {fileID: 11400000, guid: eb72c7e04aab1d645bef9ba5d2605602, type: 2}
   advReferences: {fileID: 0}
   uxmlDefaults: {fileID: 11400000, guid: b4213b3830762944fbcb9250a4b73463, type: 2}
   SFX: []

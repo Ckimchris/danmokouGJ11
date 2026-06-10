@@ -1,0 +1,11 @@
+script
+sl reimu
+sr yukari
+place l1 reimu
+slce happy
+. `Bye for real`
+z
+place r1 yukari
+srce happy
+. `Bye for real`
+z
