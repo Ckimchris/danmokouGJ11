@@ -1,0 +1,45 @@
+paction(0)
+gtrepeat({
+	bindItr(loop)
+}, {
+	move(_, nroffset(pxy(sine(pm1(&loop) * 0.1, 0.2, t / 6), 0)))
+})
+gtrepeat({
+	wait(20)
+	times(_)
+	wait-child
+	sequential
+}, {
+	async(fireball-red/, <1;0:0;0:180>, gcrepeat({
+		wait(20)
+		times(_)
+		for(2s)
+		bindLR ##bindLR is simpler to use than pm1 p
+		##p this
+	}, gsrepeat({
+		times(10)
+		sfx x-fire-burst-3
+		spread(<180>)
+	}, s(polar(3 * t, * &lr * 8 t)))))
+	async(fireball-red/, <-1;0:0;0:180>, gcrepeat({
+		wait(10)
+		times(_)
+		for(2s)
+		bindLR ##bindLR is simpler to use than pm1 p
+		##p this
+	}, gsrepeat({
+		times(10)
+		sfx x-fire-burst-3
+		spread(<180>)
+	}, s(polar(3 * t, * &lr * 8 t)))))
+	async fireball-* <0;0:0.5;0:-90> gcr2 16 _ <35> {
+		wait(10)
+		times(_)
+		for(3s)
+		color { */b */ */w }
+	} gsr2 8 <45> {
+		bank <0.6;:180>
+		sfx x-fire-burst-3
+		color $red
+	} s tprot lerpin 0.3 1 cx 4
+})

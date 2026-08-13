@@ -16,11 +16,11 @@ MonoBehaviour:
   shortTitle: Main
   replayable: 1
   allowDialogueSkip: 1
-  startLives: 9
+  startLives: 5
   players:
   - {fileID: 11400000, guid: a748e7cdf6f25e643891d64f7767dbff, type: 2}
   stages:
   - {fileID: 11400000, guid: 87041e251e41fb44292e6fe90473dfce, type: 2}
   practiceBosses:
-  - {fileID: 11400000, guid: ba54e4ce9b29edc43a4b62ccad1f3e46, type: 2}
+  - {fileID: 11400000, guid: b8664d52997fda949a543c664948b5e2, type: 2}
   endings: []
